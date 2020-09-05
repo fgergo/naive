@@ -11,8 +11,13 @@ import (
 // CgnatIp(ip) returns true if ip is a valid ip address
 // in the CGNAT address space (100.64.0.0/10)
 // otherwise returns false.
+// No whitespaces are allowed.
 // Details in rfc6598.
 func CgnatIp(ip string) bool {
+	if len(ip) > len("100.255.255.255") {
+		return false
+	}
+
 	octets := strings.Split(ip, ".")
 	if len(octets) < 4 {
 		return false
