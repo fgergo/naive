@@ -12,14 +12,17 @@ func TestCgnatIp(t *testing.T) {
 		needs bool
 	}{
 		{"100.64.0.0", true},
+		{"100.64.00.0", true},
+		{"100.64.0.01", true},
+		{"100.64.0.001", true},
 		{"100.127.255.255", true},
 		{"100.96.1.2", true},
-		{"127.1", false},
-		{"1.12.123.1234", false},
 		{"100.64.0. 0", false},	// no whitespace between octets
 		{" 100.64.0.0", false}, 	// no beginning whitespace
 		{"100.64.0.0 ", false},	// no trailing whitespace 
 		{"100.255.255.1234", false},	// string too long (and invalid octet)
+		{"127.1", false},
+		{"1.12.123.1234", false},
 		{"256.257.258.259", false},
 		{"127.0.0.1", false},
 		{"10.0.0.1", false},
