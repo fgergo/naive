@@ -1,2 +1,1 @@
-# naive
-'I trust you.' - naive supports naive experiences.
+Module naive supports naive experiences.
